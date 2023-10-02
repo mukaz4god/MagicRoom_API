@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MagicHouse.Models.Dto.RoomNumberDto>
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+			<h1 class="text-primary">Room Number List</h1>
+        </div>
+        <div class="col text-end pt-1">
+			<a asp-controller="RoomNumber" asp-action="CreateRoomNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Room Number</a>
+        </div>
+    </div>
+
+    <table class="table">
+		<thead>
+			<tr>
+				<th>
+					Room Name
+				</th>
+				<th>
+					Room Number
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model){
+				<tr>
+					 <td>@item.House.Name</td> 
+					<td>@item.RoomNo</td>
+					<td>
+						<a asp-controller="RoomNumber" asp-action="UpdateRoomNumber" asp-route-RoomNo="@item.RoomNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+						<a asp-controller="RoomNumber" asp-action="DeleteRoomNumber" asp-route-RoomNo="@item.RoomNo" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+    </table>
+
+</div>
